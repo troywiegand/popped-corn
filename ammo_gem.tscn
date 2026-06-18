@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://dxlacwq5pyd3o"]
+
+[ext_resource type="Script" uid="uid://bvfpkrfbkdbkw" path="res://ammo_gem.gd" id="1_8rleb"]
+[ext_resource type="Texture2D" uid="uid://cqb7eflelgwqj" path="res://assets/bottle.png" id="1_sowpj"]
+[ext_resource type="Texture2D" uid="uid://blwsd64rprucn" path="res://assets/marbles.png" id="2_8rleb"]
+[ext_resource type="Texture2D" uid="uid://b885q47ryknlv" path="res://assets/coin.png" id="3_8mrlc"]
+[ext_resource type="Texture2D" uid="uid://b0levi1x6iwop" path="res://assets/screw.png" id="3_qgu2n"]
+[ext_resource type="Texture2D" uid="uid://cxd5ymwlyac4v" path="res://assets/matches.png" id="5_5ist1"]
+[ext_resource type="Texture2D" uid="uid://cuhmtmn8wpes5" path="res://assets/mint.png" id="6_abpbd"]
+[ext_resource type="Texture2D" uid="uid://euxrr8bx48wc" path="res://assets/tissue.png" id="8_3vyxr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sky52"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sowpj")
+}],
+"loop": true,
+"name": &"BOTTLE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8mrlc")
+}],
+"loop": true,
+"name": &"COIN",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8rleb")
+}],
+"loop": true,
+"name": &"MARBLES",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_5ist1")
+}],
+"loop": true,
+"name": &"MATCHES",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_abpbd")
+}],
+"loop": true,
+"name": &"MINT",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qgu2n")
+}],
+"loop": true,
+"name": &"SCREW",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_3vyxr")
+}],
+"loop": true,
+"name": &"TISSUE",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sowpj"]
+size = Vector2(64, 64)
+
+[node name="AmmoGem" type="RigidBody2D"]
+input_pickable = true
+gravity_scale = 0.0
+script = ExtResource("1_8rleb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sky52")
+animation = &"TISSUE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sowpj")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

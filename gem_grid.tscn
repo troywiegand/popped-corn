@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0fv3qgv1t0k3"]
+
+[ext_resource type="Script" uid="uid://dsqomqiskck88" path="res://gem_grid.gd" id="1_jss3p"]
+[ext_resource type="PackedScene" uid="uid://dxlacwq5pyd3o" path="res://ammo_gem.tscn" id="2_0u37o"]
+
+[node name="GemGrid" type="Node"]
+script = ExtResource("1_jss3p")
+ammo_gem_scene = ExtResource("2_0u37o")
+
+[node name="Highlight" type="Polygon2D" parent="."]
+scale = Vector2(0.55, 0.55)
+color = Color(1, 1, 0.003921569, 1)
+offset = Vector2(300, -150)
+polygon = PackedVector2Array(-345.5, 88, -344.5, 206, -237.5, 202, -246.5, 83)
+uv = PackedVector2Array(-345.5, 88, -344.5, 206, -242.5, 207, -246.5, 83)
+polygons = [PackedInt32Array(3, 1, 0), PackedInt32Array(3, 2, 1)]
