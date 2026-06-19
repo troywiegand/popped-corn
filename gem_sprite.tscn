@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxaf5u3s10ess"]
+
+[ext_resource type="Texture2D" uid="uid://cqb7eflelgwqj" path="res://assets/bottle.png" id="1_m75y4"]
+[ext_resource type="Texture2D" uid="uid://b885q47ryknlv" path="res://assets/coin.png" id="2_1l2mr"]
+[ext_resource type="Texture2D" uid="uid://blwsd64rprucn" path="res://assets/marbles.png" id="3_uvjja"]
+[ext_resource type="Texture2D" uid="uid://cxd5ymwlyac4v" path="res://assets/matches.png" id="4_3tpqd"]
+[ext_resource type="Texture2D" uid="uid://cuhmtmn8wpes5" path="res://assets/mint.png" id="5_yux4t"]
+[ext_resource type="Texture2D" uid="uid://b0levi1x6iwop" path="res://assets/screw.png" id="6_tvjq5"]
+[ext_resource type="Texture2D" uid="uid://euxrr8bx48wc" path="res://assets/tissue.png" id="7_in1nn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vy2jn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_m75y4")
+}],
+"loop": true,
+"name": &"bottle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1l2mr")
+}],
+"loop": true,
+"name": &"coin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_uvjja")
+}],
+"loop": true,
+"name": &"marbles",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_3tpqd")
+}],
+"loop": true,
+"name": &"matches",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_yux4t")
+}],
+"loop": true,
+"name": &"mint",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_tvjq5")
+}],
+"loop": true,
+"name": &"screw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_in1nn")
+}],
+"loop": true,
+"name": &"tissue",
+"speed": 5.0
+}]
+
+[node name="GemSprite" type="AnimatedSprite2D"]
+position = Vector2(32, 32)
+sprite_frames = SubResource("SpriteFrames_vy2jn")
+animation = &"matches"

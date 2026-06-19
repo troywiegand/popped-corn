@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://w347umeeeteg"]
+
+[ext_resource type="Texture2D" uid="uid://crwywjyu8nytw" path="res://assets/harness.png" id="1_ll13w"]
+[ext_resource type="PackedScene" uid="uid://bxaf5u3s10ess" path="res://gem_sprite.tscn" id="2_3rr38"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3rr38"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ll13w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Harness" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_3rr38")
+
+[node name="Slot1" parent="." instance=ExtResource("2_3rr38")]
+position = Vector2(-48, -48)
+
+[node name="Slot2" parent="." instance=ExtResource("2_3rr38")]
+position = Vector2(48, -47)
+
+[node name="Slot3" parent="." instance=ExtResource("2_3rr38")]
+position = Vector2(-49, 48)
+
+[node name="Slot4" parent="." instance=ExtResource("2_3rr38")]
+position = Vector2(47, 49)

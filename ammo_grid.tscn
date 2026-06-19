@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://1o1axw1d55dd"]
+
+[ext_resource type="Script" uid="uid://bc6kk1yhraet4" path="res://ammo_grid.gd" id="1_eitbh"]
+[ext_resource type="PackedScene" uid="uid://7ynbnjpwabox" path="res://ammo_gem_button.tscn" id="2_tsm7j"]
+
+[node name="AmmoGrid" type="GridContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 6
+script = ExtResource("1_eitbh")
+ammo_gem_scene = ExtResource("2_tsm7j")

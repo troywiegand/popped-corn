@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://7ynbnjpwabox"]
+
+[ext_resource type="Script" uid="uid://lrcktnf7ena1" path="res://ammo_gem_button.gd" id="1_shp3d"]
+[ext_resource type="PackedScene" uid="uid://bxaf5u3s10ess" path="res://gem_sprite.tscn" id="2_3lho1"]
+
+[node name="AmmoGemButton" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_shp3d")
+
+[node name="GemSprite" parent="." instance=ExtResource("2_3lho1")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+show_behind_parent = true
+z_index = -1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(0.9079355, 0.86101, 0.18711197, 1)
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

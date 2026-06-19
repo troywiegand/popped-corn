@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4nut0vsfjogv"]
+
+[ext_resource type="PackedScene" uid="uid://c1llbjhyrq7dw" path="res://protag.tscn" id="1_acsud"]
+[ext_resource type="PackedScene" uid="uid://w347umeeeteg" path="res://harness.tscn" id="2_ym85i"]
+
+[node name="PopMode" type="Node2D"]
+
+[node name="Protag" parent="." instance=ExtResource("1_acsud")]
+position = Vector2(63, 113)
+
+[node name="Harness" parent="." instance=ExtResource("2_ym85i")]
+position = Vector2(293, 131)
