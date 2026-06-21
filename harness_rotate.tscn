@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://5liybqs8pqhr"]
+
+[ext_resource type="Texture2D" uid="uid://ddr18rfn2asyf" path="res://assets/corn_arrow_ccw.png" id="1_mrc2q"]
+[ext_resource type="Texture2D" uid="uid://cfrtoofmei2ip" path="res://assets/corn_arrow.png" id="1_txb11"]
+[ext_resource type="Script" uid="uid://dcuvsm7btga04" path="res://harness_rotate.gd" id="1_u0e3j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mrc2q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mrc2q")
+}],
+"loop": true,
+"name": &"CCW",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_txb11")
+}],
+"loop": true,
+"name": &"CW",
+"speed": 5.0
+}]
+
+[node name="HarnessRotate" type="Button"]
+offset_right = 71.0
+offset_bottom = 71.0
+script = ExtResource("1_u0e3j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(35, 37)
+sprite_frames = SubResource("SpriteFrames_mrc2q")
+animation = &"CCW"

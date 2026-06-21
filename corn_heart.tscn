@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh7pj5by404te"]
+
+[ext_resource type="Texture2D" uid="uid://c5n7fnmhgs0x4" path="res://assets/corn_heart_full.png" id="1_4uakp"]
+[ext_resource type="Texture2D" uid="uid://bv3jmslh258u6" path="res://assets/corn_heart_empty.png" id="2_cmsc4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_272b0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4uakp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cmsc4")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}]
+
+[node name="CornHeart" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_272b0")
+animation = &"empty"

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://w347umeeeteg"]
+[gd_scene load_steps=6 format=3 uid="uid://w347umeeeteg"]
 
 [ext_resource type="Texture2D" uid="uid://crwywjyu8nytw" path="res://assets/harness.png" id="1_ll13w"]
 [ext_resource type="PackedScene" uid="uid://bxaf5u3s10ess" path="res://gem_sprite.tscn" id="2_3rr38"]
+[ext_resource type="Script" uid="uid://c466uo1053nif" path="res://harness.gd" id="2_in87e"]
+[ext_resource type="PackedScene" uid="uid://5liybqs8pqhr" path="res://harness_rotate.tscn" id="3_uw6ft"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3rr38"]
 animations = [{
@@ -16,6 +18,7 @@ animations = [{
 
 [node name="Harness" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_3rr38")
+script = ExtResource("2_in87e")
 
 [node name="Slot1" parent="." instance=ExtResource("2_3rr38")]
 position = Vector2(-48, -48)
@@ -28,3 +31,21 @@ position = Vector2(-49, 48)
 
 [node name="Slot4" parent="." instance=ExtResource("2_3rr38")]
 position = Vector2(47, 49)
+
+[node name="HarnessRotateCW" parent="." instance=ExtResource("3_uw6ft")]
+visible = false
+offset_left = -35.0
+offset_top = 127.0
+offset_right = 36.0
+offset_bottom = 198.0
+
+[node name="HarnessRotateCCW" parent="." instance=ExtResource("3_uw6ft")]
+visible = false
+offset_left = -34.0
+offset_top = -204.0
+offset_right = 37.0
+offset_bottom = -133.0
+direction = "CCW"
+
+[connection signal="pressed" from="HarnessRotateCW" to="." method="turn_harness" binds= ["CW"]]
+[connection signal="pressed" from="HarnessRotateCCW" to="." method="turn_harness" binds= ["CCW"]]

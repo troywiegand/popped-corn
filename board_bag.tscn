@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh4tgix2ke2ld"]
+
+[ext_resource type="Texture2D" uid="uid://bppno31aa87ss" path="res://assets/bag.png" id="1_q0ps6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ot3vf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_q0ps6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BoardBag" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ot3vf")

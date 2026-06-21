@@ -1,25 +1,47 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc2cqb25orqt6"]
+[gd_scene load_steps=8 format=3 uid="uid://dc2cqb25orqt6"]
 
 [ext_resource type="PackedScene" uid="uid://1o1axw1d55dd" path="res://ammo_grid.tscn" id="1_5bglb"]
 [ext_resource type="Script" uid="uid://dp1ix6y872pfj" path="res://gem_mode.gd" id="1_x0nxw"]
 [ext_resource type="PackedScene" uid="uid://w347umeeeteg" path="res://harness.tscn" id="2_hd7xy"]
 [ext_resource type="PackedScene" uid="uid://c1llbjhyrq7dw" path="res://protag.tscn" id="3_2h8pb"]
 [ext_resource type="Script" uid="uid://c466uo1053nif" path="res://harness.gd" id="3_okvlv"]
+[ext_resource type="PackedScene" uid="uid://bh4tgix2ke2ld" path="res://board_bag.tscn" id="7_7wrrk"]
+[ext_resource type="PackedScene" uid="uid://bh7pj5by404te" path="res://corn_heart.tscn" id="8_3jssm"]
 
 [node name="gem_mode" type="Node2D"]
 script = ExtResource("1_x0nxw")
 
+[node name="BoardBag" parent="." instance=ExtResource("7_7wrrk")]
+position = Vector2(261.18753, 258.16486)
+scale = Vector2(2.1938474, 2.1893933)
+
 [node name="Harness" parent="." instance=ExtResource("2_hd7xy")]
-position = Vector2(561, 516)
+position = Vector2(643, 323)
 script = ExtResource("3_okvlv")
+showHarness = true
 
 [node name="Protag" parent="." instance=ExtResource("3_2h8pb")]
-position = Vector2(50, 75)
+position = Vector2(952, 115)
 
 [node name="AmmoGrid" parent="." instance=ExtResource("1_5bglb")]
-offset_left = 375.0
-offset_top = 25.0
-offset_right = 375.0
-offset_bottom = 25.0
+offset_left = 95.0
+offset_top = 90.0
+offset_right = 95.0
+offset_bottom = 90.0
+
+[node name="CornHeart1" parent="." instance=ExtResource("8_3jssm")]
+position = Vector2(978, 32.000004)
+scale = Vector2(0.5, 0.5)
+animation = &"default"
+
+[node name="CornHeart2" parent="." instance=ExtResource("8_3jssm")]
+position = Vector2(1046, 29)
+scale = Vector2(0.5, 0.5)
+animation = &"default"
+
+[node name="CornHeart3" parent="." instance=ExtResource("8_3jssm")]
+position = Vector2(1114, 31)
+scale = Vector2(0.5, 0.5)
+animation = &"default"
 
 [connection signal="madeAmmo" from="AmmoGrid" to="." method="_on_ammo_grid_made_ammo"]
