@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8pik2ltk611n"]
+
+[ext_resource type="Texture2D" uid="uid://b4dumddpekmqj" path="res://assets/apple.png" id="1_1jox1"]
+[ext_resource type="Texture2D" uid="uid://cbrkvgplwjqex" path="res://assets/grape.png" id="2_r513c"]
+[ext_resource type="Texture2D" uid="uid://b7bq1vx1g1vf" path="res://assets/lemon.png" id="3_q4s5a"]
+[ext_resource type="Script" uid="uid://3e4hx5cwvgvc" path="res://fruitzioso.gd" id="4_r513c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_clpbn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1jox1")
+}],
+"loop": true,
+"name": &"apple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r513c")
+}],
+"loop": true,
+"name": &"grape",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_q4s5a")
+}],
+"loop": true,
+"name": &"lemon",
+"speed": 5.0
+}]
+
+[node name="Fruitzioso" type="Control"]
+layout_mode = 3
+anchor_left = -0.026
+anchor_top = 0.041
+anchor_right = -0.026
+anchor_bottom = 0.041
+offset_left = -2.0480003
+offset_top = -57.568
+offset_right = 65.951996
+offset_bottom = 11.431999
+mouse_filter = 1
+script = ExtResource("4_r513c")
+
+[node name="FruitziosoSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 32)
+sprite_frames = SubResource("SpriteFrames_clpbn")
+animation = &"lemon"

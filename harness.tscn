@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://w347umeeeteg"]
+[gd_scene load_steps=7 format=3 uid="uid://w347umeeeteg"]
 
 [ext_resource type="Texture2D" uid="uid://crwywjyu8nytw" path="res://assets/harness.png" id="1_ll13w"]
 [ext_resource type="PackedScene" uid="uid://bxaf5u3s10ess" path="res://gem_sprite.tscn" id="2_3rr38"]
 [ext_resource type="Script" uid="uid://c466uo1053nif" path="res://harness.gd" id="2_in87e"]
 [ext_resource type="PackedScene" uid="uid://5liybqs8pqhr" path="res://harness_rotate.tscn" id="3_uw6ft"]
+[ext_resource type="SpriteFrames" uid="uid://b0nn0bbrmqbog" path="res://gem_sprites.tres" id="4_hw535"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3rr38"]
 animations = [{
@@ -22,15 +23,19 @@ script = ExtResource("2_in87e")
 
 [node name="Slot1" parent="." instance=ExtResource("2_3rr38")]
 position = Vector2(-48, -48)
+sprite_frames = ExtResource("4_hw535")
 
 [node name="Slot2" parent="." instance=ExtResource("2_3rr38")]
 position = Vector2(48, -47)
+sprite_frames = ExtResource("4_hw535")
 
 [node name="Slot3" parent="." instance=ExtResource("2_3rr38")]
 position = Vector2(-49, 48)
+sprite_frames = ExtResource("4_hw535")
 
 [node name="Slot4" parent="." instance=ExtResource("2_3rr38")]
 position = Vector2(47, 49)
+sprite_frames = ExtResource("4_hw535")
 
 [node name="HarnessRotateCW" parent="." instance=ExtResource("3_uw6ft")]
 visible = false

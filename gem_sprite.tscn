@@ -26,6 +26,11 @@ animations = [{
 "name": &"coin",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_uvjja")
@@ -70,4 +75,4 @@ animations = [{
 [node name="GemSprite" type="AnimatedSprite2D"]
 position = Vector2(32, 32)
 sprite_frames = SubResource("SpriteFrames_vy2jn")
-animation = &"matches"
+animation = &"empty"

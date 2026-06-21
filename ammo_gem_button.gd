@@ -3,7 +3,7 @@ extends Button
 @export var isHighlighted: bool = false;
 
 @onready var color_rect: ColorRect = $ColorRect
-@onready var gem_types = Array($GemSprite.sprite_frames.get_animation_names())
+@onready var gem_types = Array($GemSprite.sprite_frames.get_animation_names()).filter(func(x): return x!="empty")
 
 signal isClicked(ammo_grid)
 
