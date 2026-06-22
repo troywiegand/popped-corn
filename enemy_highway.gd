@@ -49,9 +49,12 @@ func add_in_enemy(side: bool):
 		enemies.append(e)
 	
 func next_turn():
-	enemies.sort_custom(func(x,y): return x.slot > y.slot)
+	enemies = enemies.filter(func(e): is_instance_valid(e));
+	enemies.sort_custom(func(x,y): return x.slot > y.slot);
+
 	for e in enemies:
-		e.update_tooltip()
+		print(typeof(e))
+		e.update_tooltip();
 		if e.remainingHealth <= 0:
 			print("Defeated enemy ",e.fruitType);
 			e.queue_free()
@@ -82,5 +85,4 @@ func next_turn():
 			print("no idea what happened")
 	spawn_enemies()
 	slotsUnfillable = [];
-	enemies = enemies.filter(func(e): e!=null);
 	pass

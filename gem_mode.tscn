@@ -15,6 +15,7 @@ script = ExtResource("1_x0nxw")
 [node name="BoardBag" parent="." instance=ExtResource("7_7wrrk")]
 position = Vector2(261.18753, 258.16486)
 scale = Vector2(2.1938474, 2.1893933)
+animation = &"default"
 
 [node name="Harness" parent="." instance=ExtResource("2_hd7xy")]
 position = Vector2(643, 323)

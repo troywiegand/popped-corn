@@ -54,12 +54,14 @@ func load_ammo(a) -> bool:
 		return false
 	loadedAmmo[where_null] = a
 	_load_ammo_into_slot(where_null+1,a)
+	if where_null+1 == 4:
+		return false
 	return true
 
 func fire_ammo(enemies):
 	print(enemies)
 	for e in enemies:
-		if e.slot != -1 and loadedAmmo[e.slot-1] !=null:
+		if is_instance_valid(e) and e.slot != -1 and loadedAmmo[e.slot-1] !=null:
 			var this_type = loadedAmmo[e.slot-1].type
 			var this_power = loadedAmmo[e.slot-1].power 
 			print("Effecting ",e.fruitType," with a shot ",this_type, " of strength ",this_power)

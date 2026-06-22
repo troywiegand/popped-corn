@@ -9,7 +9,7 @@ const COLS = 5
 var tiles = []
 var selected: Node = null
 
-func _create_board():
+func create_board():
 	if len(tiles) > 0:
 		for child in get_children():
 			child.queue_free()
@@ -29,7 +29,7 @@ func _create_board():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_create_board()
+	create_board()
 	pass # Replace with function body.
 
 func _on_tile_clicked(tile) -> void:

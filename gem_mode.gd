@@ -26,6 +26,10 @@ func _on_ammo_grid_made_ammo(ammo: Variant) -> void:
 			readyToFire.emit();
 			$FireButton.show();
 			return
+		else:
+			$BoardBag.animation = "closed";
+			$BoardBag.play();
+			$AmmoGrid.hide();
 	pass # Replace with function body.
 
 
@@ -33,6 +37,10 @@ func _on_fire_button_pressed() -> void:
 	$Harness.fire_ammo($EnemyHighway.enemies);
 	$FireButton.hide();
 	$EnemyHighway.next_turn();
+	$AmmoGrid.create_board();
+	$BoardBag.animation = "default";
+	$BoardBag.play();
+	$AmmoGrid.show();
 	pass # Replace with function body.
 
 
