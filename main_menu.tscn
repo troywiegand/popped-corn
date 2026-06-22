@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://c57hfpopr5524"]
+
+[ext_resource type="Texture2D" uid="uid://dv1upcgaf3djo" path="res://assets/pop_off.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://nlkfjkcc3j3g" path="res://main_menu.gd" id="1_7vrkn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7vrkn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_06t4h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7vrkn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(189.00002, 154)
+scale = Vector2(2.5625, 2.5625)
+sprite_frames = SubResource("SpriteFrames_7vrkn")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 518.0
+offset_top = 425.0
+offset_right = 641.0
+offset_bottom = 456.0
+text = "Play The Game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

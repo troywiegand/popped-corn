@@ -1,10 +1,9 @@
-extends Node
+extends Control
 
+signal startGame;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$PopMode.hide()
-	$GemMode.hide()
 	pass # Replace with function body.
 
 
@@ -13,7 +12,6 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func _on_main_menu_start_game() -> void:
-	$MainMenu.hide()
-	$GemMode.show()
+func _on_button_pressed() -> void:
+	startGame.emit();
 	pass # Replace with function body.

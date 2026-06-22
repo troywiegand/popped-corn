@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://uj7j2c4hmdex"]
+[gd_scene load_steps=5 format=3 uid="uid://uj7j2c4hmdex"]
 
 [ext_resource type="PackedScene" uid="uid://c4nut0vsfjogv" path="res://pop_mode.tscn" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://dbrbfbroupskf" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://dc2cqb25orqt6" path="res://gem_mode.tscn" id="3_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://c57hfpopr5524" path="res://main_menu.tscn" id="4_fc0e3"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_feb5d")
@@ -10,3 +11,7 @@ script = ExtResource("1_feb5d")
 [node name="PopMode" parent="." instance=ExtResource("1_80nbo")]
 
 [node name="GemMode" parent="." instance=ExtResource("3_fc0e3")]
+
+[node name="MainMenu" parent="." instance=ExtResource("4_fc0e3")]
+
+[connection signal="startGame" from="MainMenu" to="." method="_on_main_menu_start_game"]
