@@ -4,6 +4,7 @@ signal readyToFire
 signal gameOver
 
 var protag_health = 3;
+var score = 0;
 
 
 # Called when the node enters the scene tree for the first time.
@@ -90,4 +91,10 @@ func _on_enemy_highway_deal_damage() -> void:
 		$CornHeart3.play();
 		protag_health = 0;
 		gameOver.emit();
+	pass # Replace with function body.
+
+
+func _on_enemy_highway_defeat_enemy() -> void:
+	score += 1;
+	$ScoreTracker.text="Score: "+str(score)
 	pass # Replace with function body.

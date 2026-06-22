@@ -60,18 +60,19 @@ func load_ammo(a) -> bool:
 
 func fire_ammo(enemies):
 	print(enemies)
-	for e in enemies:
-		if is_instance_valid(e) and e.slot != -1 and loadedAmmo[e.slot-1] !=null:
-			var this_type = loadedAmmo[e.slot-1].type
-			var this_power = loadedAmmo[e.slot-1].power 
-			print("Effecting ",e.fruitType," with a shot ",this_type, " of strength ",this_power)
-			var this_scaling = ammoScale[this_type];
-			print(this_scaling);
-			print("Taking damage: ",ceil(this_power * this_scaling["d"]) + e.dot + slotEffects[e.slot-1])
-			print("Will take later: ", ceil(this_power*this_scaling["b"]))
-			e.remainingHealth -= int(ceil(this_power * this_scaling["d"]) + e.dot + slotEffects[e.slot-1]);
-			e.dot += ceil(this_power*this_scaling["b"]);
-			e.isStunned = this_scaling["s"] > 0;
+	for s in enemies:
+		for e in enemies[s]:
+			if is_instance_valid(e) and e.slot != -1 and loadedAmmo[e.slot-1] !=null:
+				var this_type = loadedAmmo[e.slot-1].type
+				var this_power = loadedAmmo[e.slot-1].power 
+				print("Effecting ",e.fruitType," with a shot ",this_type, " of strength ",this_power)
+				var this_scaling = ammoScale[this_type];
+				print(this_scaling);
+				print("Taking damage: ",ceil(this_power * this_scaling["d"]) + e.dot + slotEffects[e.slot-1])
+				print("Will take later: ", ceil(this_power*this_scaling["b"]))
+				e.remainingHealth -= int(ceil(this_power * this_scaling["d"]) + e.dot + slotEffects[e.slot-1]);
+				e.dot += ceil(this_power*this_scaling["b"]);
+				e.isStunned = this_scaling["s"] > 0;
 	for s in len(loadedAmmo):
 		if loadedAmmo[s] != null:
 			var this_slot = loadedAmmo[s];

@@ -1,8 +1,15 @@
 extends Node2D
 
-@export var enemies = [];
+@export var enemies = {
+	4: [],
+	3: [],
+	2: [],
+	1: [],
+	0: []
+};
 @export var enemy_scene: PackedScene = preload("res://fruitzioso.tscn");
 
+signal defeatEnemy;
 signal dealDamage;
 
 var rate_to_make_two = 0.3;
@@ -46,43 +53,46 @@ func add_in_enemy(side: bool):
 		e.slot = slotNumber; 
 		add_child(e)
 		e.show();
-		enemies.append(e)
+		enemies[slotNumber].append(e)
 	
 func next_turn():
-	enemies = enemies.filter(func(e): is_instance_valid(e));
-	enemies.sort_custom(func(x,y): return x.slot > y.slot);
-
-	for e in enemies:
-		print(typeof(e))
-		e.update_tooltip();
-		if e.remainingHealth <= 0:
-			print("Defeated enemy ",e.fruitType);
-			e.queue_free()
-		elif e.isStunned:
-			e.isStunned = false
-			slotsUnfillable.append(e.Slot)
-		elif e.slot == 0:
-			dealDamage.emit();
-			e.queue_free();
-		elif e.slot == 1 or e.slot == 2:
-			e.slot = 0
-			e.position = $Danger.position
-		elif e.slot == 3:
-			if slotsUnfillable.find(1) > -1:
-				slotsUnfillable.append(3)
-				print("Unable to move forward")
+	print(enemies)
+	for s in enemies:
+		for e in enemies[s]:
+			print(typeof(e))
+			if not is_instance_valid(e):
+				print('my guy is dead')
+				continue
+			e.update_tooltip();
+			if e.remainingHealth <= 0:
+				print("Defeated enemy ",e.fruitType);
+				defeatEnemy.emit();
+				e.queue_free()
+			elif e.isStunned:
+				e.isStunned = false
+				slotsUnfillable.append(e.Slot)
+			elif e.slot == 0:
+				dealDamage.emit();
+				e.queue_free();
+			elif e.slot == 1 or e.slot == 2:
+				e.slot = 0
+				e.position = $Danger.position
+			elif e.slot == 3:
+				if slotsUnfillable.find(1) > -1:
+					slotsUnfillable.append(3)
+					print("Unable to move forward")
+				else:
+					e.slot = 1
+					e.position = $Slot1.position
+			elif e.slot == 4:
+				if slotsUnfillable.find(2) > -1:
+					slotsUnfillable.append(4)
+					print("Unable to move forward")
+				else:
+					e.slot = 2
+					e.position = $Slot2.position
 			else:
-				e.slot = 1
-				e.position = $Slot1.position
-		elif e.slot == 4:
-			if slotsUnfillable.find(2) > -1:
-				slotsUnfillable.append(4)
-				print("Unable to move forward")
-			else:
-				e.slot = 2
-				e.position = $Slot2.position
-		else:
-			print("no idea what happened")
+				print("no idea what happened")
 	spawn_enemies()
 	slotsUnfillable = [];
 	pass

@@ -55,7 +55,15 @@ offset_top = 68.0
 offset_right = 848.0
 offset_bottom = 164.0
 
+[node name="ScoreTracker" type="RichTextLabel" parent="."]
+offset_left = 831.0
+offset_top = 11.0
+offset_right = 932.0
+offset_bottom = 39.0
+text = "Score: "
+
 [connection signal="fireHealth" from="Harness" to="." method="_on_harness_fire_health"]
 [connection signal="madeAmmo" from="AmmoGrid" to="." method="_on_ammo_grid_made_ammo"]
 [connection signal="dealDamage" from="EnemyHighway" to="." method="_on_enemy_highway_deal_damage"]
+[connection signal="defeatEnemy" from="EnemyHighway" to="." method="_on_enemy_highway_defeat_enemy"]
 [connection signal="pressed" from="FireButton" to="." method="_on_fire_button_pressed"]
