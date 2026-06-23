@@ -3,27 +3,24 @@ extends Button
 @export var isHighlighted: bool = false;
 
 @onready var color_rect: ColorRect = $ColorRect
-@onready var gem_types = Array($GemSprite.sprite_frames.get_animation_names()).filter(func(x): return x!="empty")
+@onready var gem_types = $GemSprite.gem_types
 
 signal isClicked(ammo_grid)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ammoType = gem_types.pick_random();
-	$GemSprite.animation = ammoType;
-	$GemSprite.play();
+	$GemSprite.update_sprite(ammoType);
 	color_rect.hide();
 	pass # Replace with function body.
 
 func change_ammo_type(s: String):
 	if s in gem_types:
 		ammoType = s
-		$GemSprite.animation = ammoType;
-		$GemSprite.play();
+		$GemSprite.update_sprite(ammoType)
 	elif s == "random":
 		ammoType = gem_types.pick_random();
-		$GemSprite.animation = ammoType;
-		$GemSprite.play();
+		$GemSprite.update_sprite(ammoType)
 	else:
 		ammoType = "empty"
 

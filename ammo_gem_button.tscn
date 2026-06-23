@@ -1,17 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://7ynbnjpwabox"]
+[gd_scene load_steps=3 format=3 uid="uid://7ynbnjpwabox"]
 
 [ext_resource type="Script" uid="uid://lrcktnf7ena1" path="res://ammo_gem_button.gd" id="1_shp3d"]
 [ext_resource type="PackedScene" uid="uid://bxaf5u3s10ess" path="res://gem_sprite.tscn" id="2_3lho1"]
-[ext_resource type="SpriteFrames" uid="uid://b0nn0bbrmqbog" path="res://gem_sprites.tres" id="3_s20mp"]
 
 [node name="AmmoGemButton" type="Button"]
+clip_contents = true
 custom_minimum_size = Vector2(64, 64)
 offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_shp3d")
 
 [node name="GemSprite" parent="." instance=ExtResource("2_3lho1")]
-sprite_frames = ExtResource("3_s20mp")
+layout_mode = 0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

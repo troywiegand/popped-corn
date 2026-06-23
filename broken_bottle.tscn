@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc1xgf2hyonc1"]
+
+[ext_resource type="Texture2D" uid="uid://dlidn26o6guu5" path="res://assets/broken_bottle.png" id="1_3lqpr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v535p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3lqpr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BrokenBottle" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_v535p")

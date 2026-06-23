@@ -1,7 +1,7 @@
 extends Node2D
 
 signal readyToFire
-signal gameOver
+signal gameOver(score: int)
 
 var protag_health = 3;
 var score = 0;
@@ -90,7 +90,7 @@ func _on_enemy_highway_deal_damage() -> void:
 		$CornHeart3.animation="empty";
 		$CornHeart3.play();
 		protag_health = 0;
-		gameOver.emit();
+		gameOver.emit(score);
 	pass # Replace with function body.
 
 

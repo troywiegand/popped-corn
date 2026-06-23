@@ -34,4 +34,11 @@ offset_right = 641.0
 offset_bottom = 456.0
 text = "Play The Game"
 
+[node name="GameScore" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 630.0
+offset_top = 189.0
+offset_right = 878.0
+offset_bottom = 237.0
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

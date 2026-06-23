@@ -21,4 +21,5 @@ func _process(_delta: float) -> void:
 	pass
 
 func update_tooltip():
-	tooltip_text = "A "+fruitType+" with "+str(remainingHealth)+" HP left taking "+str(dot)+" damage next turn."; 
+	tooltip_text = "A "+fruitType+" with "+str(remainingHealth)+" HP left taking "+str(int(dot))+" damage next turn.";
+	$Health.text = "[color=red]"+str(remainingHealth)+"[/color]";

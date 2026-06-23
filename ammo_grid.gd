@@ -38,16 +38,50 @@ func _on_tile_clicked(tile) -> void:
 		selected = tile
 		return
 	else:
-		selected.highlight()
-		swap(tile)
-		selected=null
+		
+		if _is_adjacent(selected, tile):
+			selected.highlight()
+			swap(tile)
+			selected=null
+		else:
+			selected.highlight()
+			selected = tile
+			selected.highlight()
 	pass
 	
+func _get_coords(t):
+	for r in range(ROWS):
+		var c = tiles[r].find(t)
+		if c > -1:
+			return Vector2(r,c);
+	return null
+
+func _is_adjacent(a, b):
+	# check if tile a is left/up/down/right of tile b
+	var a_coords = _get_coords(a)
+	var b_coords = _get_coords(b)
+	
+	if a_coords == null or b_coords == null:
+		return false
+	
+	return (
+		(a_coords.x == b_coords.x and abs(a_coords.y - b_coords.y) == 1) 
+		or 
+		(a_coords.y == b_coords.y and abs(a_coords.x - b_coords.x) == 1) 
+	)
+
 func swap(tile) -> void:
 	swapTwoTiles(tile,selected);
 	var matches = check_for_matches();
 	remove_matches(matches);
 	refill_grid()
+	while true:
+		matches = check_for_matches()
+		if len(matches) == 0:
+			break
+		await remove_matches(matches)
+		await refill_grid()
+
 	pass
 
 func swapTwoTiles(x,y):

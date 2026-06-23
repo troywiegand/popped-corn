@@ -13,7 +13,8 @@ signal defeatEnemy;
 signal dealDamage;
 
 var rate_to_make_two = 0.3;
-var slotsUnfillable = []; 
+var slotsUnfillable = [];
+var slotEffects = [0,0,0,0];
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -50,7 +51,9 @@ func add_in_enemy(side: bool):
 	else:
 		e.position = sidePos;
 		e.remainingHealth = randi() % 3 + 3;
-		e.slot = slotNumber; 
+		e.slot = slotNumber;
+		print(slotEffects)
+		e.dot = slotEffects[slotNumber-1]
 		add_child(e)
 		e.show();
 		enemies[slotNumber].append(e)
@@ -63,14 +66,13 @@ func next_turn():
 			if not is_instance_valid(e):
 				print('my guy is dead')
 				continue
-			e.update_tooltip();
 			if e.remainingHealth <= 0:
 				print("Defeated enemy ",e.fruitType);
 				defeatEnemy.emit();
 				e.queue_free()
 			elif e.isStunned:
 				e.isStunned = false
-				slotsUnfillable.append(e.Slot)
+				slotsUnfillable.append(e.slot)
 			elif e.slot == 0:
 				dealDamage.emit();
 				e.queue_free();
@@ -84,6 +86,7 @@ func next_turn():
 				else:
 					e.slot = 1
 					e.position = $Slot1.position
+					e.dot += slotEffects[0]
 			elif e.slot == 4:
 				if slotsUnfillable.find(2) > -1:
 					slotsUnfillable.append(4)
@@ -91,8 +94,32 @@ func next_turn():
 				else:
 					e.slot = 2
 					e.position = $Slot2.position
+					e.dot += slotEffects[1]
 			else:
 				print("no idea what happened")
+			e.update_tooltip();
 	spawn_enemies()
 	slotsUnfillable = [];
 	pass
+
+func toggle_glass(n,b):
+	var bb = null;
+	if n == 1:
+		bb = $Slot1/BrokenBottle
+	elif n == 2:
+		bb = $Slot2/BrokenBottle
+	elif n == 3:
+		bb = $Slot3/BrokenBottle
+	elif n == 4:
+		bb = $Slot4/BrokenBottle
+	if b:
+		bb.show()
+	else:
+		bb.hide()
+
+
+func _on_harness_activate_hazard(slot: int, strength:int) -> void:
+	toggle_glass(slot, true)
+	slotEffects[slot-1] += strength
+	print(slotEffects)
+	pass # Replace with function body.

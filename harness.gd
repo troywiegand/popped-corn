@@ -4,6 +4,7 @@ extends AnimatedSprite2D
 
 signal fullAmmo;
 signal fireHealth(strength: int);
+signal activateHazard(slot: int, stength:int);
 
 ### 1 2
 ### 3 4
@@ -22,7 +23,7 @@ var ammoScale = {
 	"matches": {"l":0,"d":1,"h":0,"b":0.5,"s":0},
 	"mint": {"l":0,"d":0,"h":0.1,"b":0,"s":0},
 	"screw": {"l":0,"d":0.5,"h":0,"b":2,"s":0},
-	"tissue": {"l":0,"d":1,"h":0,"b":0,"s":0.1},
+	"tissue": {"l":0,"d":0.1,"h":0,"b":0,"s":0.1},
 }
 
 var CW = [1,3,0,2];
@@ -77,7 +78,10 @@ func fire_ammo(enemies):
 		if loadedAmmo[s] != null:
 			var this_slot = loadedAmmo[s];
 			var this_scaling = ammoScale[this_slot.type];
-			slotEffects[s] = ceil(this_scaling["l"]*this_slot.power)
+			if this_scaling["l"] > 0:
+				slotEffects[s] = int(ceil(this_scaling["l"]*this_slot.power))
+				print(slotEffects)
+				activateHazard.emit(s+1, slotEffects[s])
 			if this_scaling["h"] > 0:
 				fireHealth.emit(this_slot.power)
 			
@@ -131,9 +135,5 @@ func _load_ammo_into_slot(n: int, a):
 	var this_slot = _pick_slot(n)
 	var this_type = a.type if a!=null and "type" in a else "empty";
 	print("Loading ",this_type," into ",n)
-	if this_type == "empty":
-		this_slot.hide();
-	else:
-		this_slot.animation = this_type;
-		this_slot.play();
-		this_slot.show();
+	this_slot.update_sprite(this_type);
+	this_slot.update_tooltip(this_type);

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7e21est2sktl"]
+[gd_scene load_steps=6 format=3 uid="uid://b7e21est2sktl"]
 
 [ext_resource type="Script" uid="uid://ds2d3ripwdhg" path="res://enemy_highway.gd" id="1_1dx0o"]
 [ext_resource type="Texture2D" uid="uid://req04e04fcoo" path="res://assets/road.png" id="1_ymosl"]
 [ext_resource type="Texture2D" uid="uid://cvjy64d4qdfn" path="res://assets/road_with_highlights.png" id="2_1dx0o"]
+[ext_resource type="PackedScene" uid="uid://cc1xgf2hyonc1" path="res://broken_bottle.tscn" id="4_qdfb0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qdfb0"]
 animations = [{
@@ -33,14 +34,30 @@ animation = &"highlights"
 [node name="Slot1" type="Node2D" parent="."]
 position = Vector2(-61, -73)
 
+[node name="BrokenBottle" parent="Slot1" instance=ExtResource("4_qdfb0")]
+visible = false
+position = Vector2(27, 49)
+
 [node name="Slot2" type="Node2D" parent="."]
 position = Vector2(12, -72)
+
+[node name="BrokenBottle" parent="Slot2" instance=ExtResource("4_qdfb0")]
+visible = false
+position = Vector2(26, 49)
 
 [node name="Slot3" type="Node2D" parent="."]
 position = Vector2(-62, 34)
 
+[node name="BrokenBottle" parent="Slot3" instance=ExtResource("4_qdfb0")]
+visible = false
+position = Vector2(24, 53)
+
 [node name="Slot4" type="Node2D" parent="."]
 position = Vector2(13, 33)
+
+[node name="BrokenBottle" parent="Slot4" instance=ExtResource("4_qdfb0")]
+visible = false
+position = Vector2(23, 60)
 
 [node name="Danger" type="Node2D" parent="."]
 position = Vector2(-19, -126)

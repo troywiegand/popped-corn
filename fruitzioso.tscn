@@ -49,3 +49,13 @@ script = ExtResource("4_r513c")
 position = Vector2(32, 32)
 sprite_frames = SubResource("SpriteFrames_clpbn")
 animation = &"lemon"
+
+[node name="Health" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 45.0
+offset_right = 86.0
+offset_bottom = 85.0
+bbcode_enabled = true
+text = "[color=red]0[/color]
+"

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://uj7j2c4hmdex"]
+[gd_scene load_steps=6 format=3 uid="uid://uj7j2c4hmdex"]
 
 [ext_resource type="PackedScene" uid="uid://c4nut0vsfjogv" path="res://pop_mode.tscn" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://dbrbfbroupskf" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://dc2cqb25orqt6" path="res://gem_mode.tscn" id="3_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://c57hfpopr5524" path="res://main_menu.tscn" id="4_fc0e3"]
+[ext_resource type="AudioStream" uid="uid://x76xnofdl0j1" path="res://assets/bgm.mp3" id="5_7jktm"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_feb5d")
@@ -14,4 +15,10 @@ script = ExtResource("1_feb5d")
 
 [node name="MainMenu" parent="." instance=ExtResource("4_fc0e3")]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7jktm")
+volume_db = -6.005
+parameters/looping = true
+
+[connection signal="gameOver" from="GemMode" to="." method="_on_gem_mode_game_over"]
 [connection signal="startGame" from="MainMenu" to="." method="_on_main_menu_start_game"]

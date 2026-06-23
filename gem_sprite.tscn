@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxaf5u3s10ess"]
+[gd_scene load_steps=10 format=3 uid="uid://bxaf5u3s10ess"]
 
+[ext_resource type="Script" uid="uid://ddo5auuri2376" path="res://gem_sprite.gd" id="1_1l2mr"]
 [ext_resource type="Texture2D" uid="uid://cqb7eflelgwqj" path="res://assets/bottle.png" id="1_m75y4"]
 [ext_resource type="Texture2D" uid="uid://b885q47ryknlv" path="res://assets/coin.png" id="2_1l2mr"]
 [ext_resource type="Texture2D" uid="uid://blwsd64rprucn" path="res://assets/marbles.png" id="3_uvjja"]
@@ -72,7 +73,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="GemSprite" type="AnimatedSprite2D"]
+[node name="GemSprite" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_1l2mr")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(32, 32)
 sprite_frames = SubResource("SpriteFrames_vy2jn")
-animation = &"empty"
+animation = &"bottle"
